@@ -1,4 +1,4 @@
-export function CustomerFeedbackTab() {
+﻿export function CustomerFeedbackTab() {
   const feedback = [
     {
       platform: 'Canva',
@@ -167,7 +167,7 @@ export function CustomerFeedbackTab() {
   return (
     <div className="space-y-8">
       {/* Introduction */}
-      <div className="bg-white rounded-2xl border border-indigo-100 p-8 shadow-sm">
+      <div className="bg-white rounded-2xl border border-amber-200 p-8 shadow-sm">
         <h2 className="text-3xl font-bold text-gray-900 mb-4">Customer Feedback Analysis</h2>
         <p className="text-gray-600">
           Real user feedback collected from reviews, forums, and customer interviews across all competitive platforms.
@@ -179,12 +179,12 @@ export function CustomerFeedbackTab() {
         {feedback.map((item, index) => (
           <div
             key={index}
-            className={`bg-white rounded-2xl border border-indigo-100 p-6 shadow-sm ${
+            className={`bg-white rounded-2xl border border-amber-200 p-6 shadow-sm ${
               item.platform === 'Gen Canopy' ? 'ring-2 ring-indigo-500/20' : ''
             }`}
           >
             <h3 className={`text-2xl font-bold mb-4 ${
-              item.platform === 'Gen Canopy' ? 'text-indigo-900' : 'text-gray-900'
+              item.platform === 'Gen Canopy' ? 'text-amber-900' : 'text-gray-900'
             }`}>
               {item.platform}
             </h3>

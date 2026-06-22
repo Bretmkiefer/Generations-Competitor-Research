@@ -14,6 +14,12 @@ import overviewSrc from './components/tabs/OverviewTab.tsx?raw';
 import competitiveSrc from './components/tabs/CompetitiveAnalysisTab.tsx?raw';
 import feedbackSrc from './components/tabs/CustomerFeedbackTab.tsx?raw';
 import toolsSrc from './components/tabs/ToolsBreakdownTab.tsx?raw';
+import languageSrc from './components/tabs/CompanyLanguageTab.tsx?raw';
+import pathSrc from './components/tabs/PathOfCreationTab.tsx?raw';
+import tablesSrc from './components/tabs/TablesGraphicsTab.tsx?raw';
+import imagesSrc from './components/tabs/ImagesResultsTab.tsx?raw';
+import storyboardSrc from './components/tabs/StoryBoardTab.tsx?raw';
+import todosSrc from './components/tabs/TodosTab.tsx?raw';
 import fontsCss from '../styles/fonts.css?raw';
 import themeCss from '../styles/theme.css?raw';
 import indexCss from '../styles/index.css?raw';
@@ -32,6 +38,12 @@ const SOURCE_FILES: Record<string, string> = {
   'src/app/components/tabs/CompetitiveAnalysisTab.tsx': competitiveSrc,
   'src/app/components/tabs/CustomerFeedbackTab.tsx': feedbackSrc,
   'src/app/components/tabs/ToolsBreakdownTab.tsx': toolsSrc,
+  'src/app/components/tabs/CompanyLanguageTab.tsx': languageSrc,
+  'src/app/components/tabs/PathOfCreationTab.tsx': pathSrc,
+  'src/app/components/tabs/TablesGraphicsTab.tsx': tablesSrc,
+  'src/app/components/tabs/ImagesResultsTab.tsx': imagesSrc,
+  'src/app/components/tabs/StoryBoardTab.tsx': storyboardSrc,
+  'src/app/components/tabs/TodosTab.tsx': todosSrc,
   'src/styles/fonts.css': fontsCss,
   'src/styles/theme.css': themeCss,
   'src/styles/index.css': indexCss,

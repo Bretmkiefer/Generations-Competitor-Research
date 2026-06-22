@@ -1,6 +1,6 @@
-export function CompetitiveAnalysisTab() {
+﻿export function CompetitiveAnalysisTab() {
   const threats = [
-    { name: 'Gen Canopy', score: 10, color: 'bg-indigo-600', threat: 'Market Leader', category: 'Cat 3+' },
+    { name: 'Gen Canopy', score: 10, color: 'bg-amber-700', threat: 'Market Leader', category: 'Cat 3+' },
     { name: 'Claid.ai', score: 7.5, color: 'bg-orange-500', threat: 'High Threat', category: 'Cat 3' },
     { name: 'Nightjar', score: 7, color: 'bg-orange-500', threat: 'High Threat', category: 'Cat 3' },
     { name: 'Kive.ai', score: 7, color: 'bg-orange-500', threat: 'High Threat', category: 'Cat 3' },
@@ -52,7 +52,7 @@ export function CompetitiveAnalysisTab() {
   return (
     <div className="space-y-8">
       {/* Introduction */}
-      <div className="bg-white rounded-2xl border border-indigo-100 p-8 shadow-sm">
+      <div className="bg-white rounded-2xl border border-amber-200 p-8 shadow-sm">
         <h2 className="text-3xl font-bold text-gray-900 mb-4">Competitive Threat Assessment</h2>
         <p className="text-gray-600">
           Quantitative analysis of competitive positioning based on feature completeness, market presence, and direct competition.
@@ -60,7 +60,7 @@ export function CompetitiveAnalysisTab() {
       </div>
 
       {/* Threat Score Chart */}
-      <div className="bg-white rounded-2xl border border-indigo-100 p-8 shadow-sm">
+      <div className="bg-white rounded-2xl border border-amber-200 p-8 shadow-sm">
         <h3 className="text-2xl font-bold text-gray-900 mb-6">Competitive Threat Scores</h3>
 
         <div className="space-y-4">
@@ -69,7 +69,7 @@ export function CompetitiveAnalysisTab() {
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <span className={`font-semibold ${
-                    item.name === 'Gen Canopy' ? 'text-indigo-900' : 'text-gray-900'
+                    item.name === 'Gen Canopy' ? 'text-amber-900' : 'text-gray-900'
                   }`}>
                     {item.name}
                   </span>
@@ -100,12 +100,12 @@ export function CompetitiveAnalysisTab() {
       </div>
 
       {/* Key Insights */}
-      <div className="bg-white rounded-2xl border border-indigo-100 p-8 shadow-sm">
+      <div className="bg-white rounded-2xl border border-amber-200 p-8 shadow-sm">
         <h3 className="text-2xl font-bold text-gray-900 mb-6">Strategic Insights</h3>
 
         <div className="grid md:grid-cols-2 gap-6">
           {keyInsights.map((item, index) => (
-            <div key={index} className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl p-6">
+            <div key={index} className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl p-6">
               <div className="text-3xl mb-3">{item.icon}</div>
               <h4 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h4>
               <p className="text-gray-700">{item.insight}</p>
@@ -115,12 +115,12 @@ export function CompetitiveAnalysisTab() {
       </div>
 
       {/* Market Segmentation */}
-      <div className="bg-white rounded-2xl border border-indigo-100 p-8 shadow-sm">
+      <div className="bg-white rounded-2xl border border-amber-200 p-8 shadow-sm">
         <h3 className="text-2xl font-bold text-gray-900 mb-6">Market Segmentation</h3>
 
         <div className="grid md:grid-cols-3 gap-6">
-          <div className="bg-blue-50 rounded-xl p-6">
-            <h4 className="text-lg font-bold text-blue-900 mb-3">Category 1: General Design</h4>
+          <div className="bg-amber-50 rounded-xl p-6">
+            <h4 className="text-lg font-bold text-amber-900 mb-3">Category 1: General Design</h4>
             <ul className="space-y-2 text-sm text-gray-700">
               <li>• Canva</li>
               <li>• Adobe Firefly</li>
@@ -131,8 +131,8 @@ export function CompetitiveAnalysisTab() {
             </p>
           </div>
 
-          <div className="bg-purple-50 rounded-xl p-6">
-            <h4 className="text-lg font-bold text-purple-900 mb-3">Category 2: AI Art Tools</h4>
+          <div className="bg-orange-50 rounded-xl p-6">
+            <h4 className="text-lg font-bold text-orange-900 mb-3">Category 2: AI Art Tools</h4>
             <ul className="space-y-2 text-sm text-gray-700">
               <li>• ChatGPT / GPT-4o</li>
               <li>• Midjourney v7</li>

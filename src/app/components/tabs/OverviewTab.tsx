@@ -1,12 +1,12 @@
-export function OverviewTab() {
+﻿export function OverviewTab() {
   const platforms = [
     { name: 'Gen Canopy', cat: '3+', batchGen: '✓', brandLock: '✓', sceneBuilder: '✓', productSKU: '✓', stylePresets: '✓', multiBrand: '✓', pricing: 'Agency / enterprise', catColor: 'bg-emerald-500' },
-    { name: 'Canva', cat: '1', batchGen: '~', brandLock: '~', sceneBuilder: '✗', productSKU: '✗', stylePresets: '~', multiBrand: '~', pricing: 'Freemium → team', catColor: 'bg-blue-500' },
-    { name: 'Adobe Firefly', cat: '1', batchGen: '~', brandLock: '~', sceneBuilder: '✗', productSKU: '✗', stylePresets: '✓', multiBrand: '✓', pricing: 'Subscription + CC', catColor: 'bg-blue-500' },
-    { name: 'AdCreative.ai', cat: '1', batchGen: '✓', brandLock: '~', sceneBuilder: '✗', productSKU: '✗', stylePresets: '~', multiBrand: '~', pricing: 'Tiered subscription', catColor: 'bg-blue-500' },
-    { name: 'ChatGPT / GPT-4o', cat: '2', batchGen: '✗', brandLock: '✗', sceneBuilder: '✗', productSKU: '✗', stylePresets: '✗', multiBrand: '✗', pricing: 'Free / $20/mo', catColor: 'bg-purple-500' },
-    { name: 'Midjourney v7', cat: '2', batchGen: '✗', brandLock: '✗', sceneBuilder: '✗', productSKU: '✗', stylePresets: '~', multiBrand: '✗', pricing: '$10 – $120/mo', catColor: 'bg-purple-500' },
-    { name: 'Stable Diffusion', cat: '2', batchGen: '~', brandLock: '✗', sceneBuilder: '✗', productSKU: '✗', stylePresets: '~', multiBrand: '✗', pricing: 'Free (self-hosted)', catColor: 'bg-purple-500' },
+    { name: 'Canva', cat: '1', batchGen: '~', brandLock: '~', sceneBuilder: '✗', productSKU: '✗', stylePresets: '~', multiBrand: '~', pricing: 'Freemium → team', catColor: 'bg-amber-500' },
+    { name: 'Adobe Firefly', cat: '1', batchGen: '~', brandLock: '~', sceneBuilder: '✗', productSKU: '✗', stylePresets: '✓', multiBrand: '✓', pricing: 'Subscription + CC', catColor: 'bg-amber-500' },
+    { name: 'AdCreative.ai', cat: '1', batchGen: '✓', brandLock: '~', sceneBuilder: '✗', productSKU: '✗', stylePresets: '~', multiBrand: '~', pricing: 'Tiered subscription', catColor: 'bg-amber-500' },
+    { name: 'ChatGPT / GPT-4o', cat: '2', batchGen: '✗', brandLock: '✗', sceneBuilder: '✗', productSKU: '✗', stylePresets: '✗', multiBrand: '✗', pricing: 'Free / $20/mo', catColor: 'bg-orange-500' },
+    { name: 'Midjourney v7', cat: '2', batchGen: '✗', brandLock: '✗', sceneBuilder: '✗', productSKU: '✗', stylePresets: '~', multiBrand: '✗', pricing: '$10 – $120/mo', catColor: 'bg-orange-500' },
+    { name: 'Stable Diffusion', cat: '2', batchGen: '~', brandLock: '✗', sceneBuilder: '✗', productSKU: '✗', stylePresets: '~', multiBrand: '✗', pricing: 'Free (self-hosted)', catColor: 'bg-orange-500' },
     { name: 'Claid.ai', cat: '3', batchGen: '✓', brandLock: '✓', sceneBuilder: '~', productSKU: '~', stylePresets: '✓', multiBrand: '~', pricing: '$9 – $49/mo + API', catColor: 'bg-emerald-500' },
     { name: 'Nightjar', cat: '3', batchGen: '✓', brandLock: '✓', sceneBuilder: '~', productSKU: '~', stylePresets: '✓', multiBrand: '✗', pricing: '$25 – $50/mo', catColor: 'bg-emerald-500' },
     { name: 'Flair.ai', cat: '3', batchGen: '~', brandLock: '~', sceneBuilder: '✓', productSKU: '✗', stylePresets: '~', multiBrand: '✗', pricing: 'Free – $10/mo', catColor: 'bg-emerald-500' },
@@ -19,7 +19,7 @@ export function OverviewTab() {
   return (
     <div className="space-y-8">
       {/* Introduction */}
-      <div className="bg-white rounded-2xl border border-indigo-100 p-8 shadow-sm">
+      <div className="bg-white rounded-2xl border border-amber-200 p-8 shadow-sm">
         <h2 className="text-3xl font-bold text-gray-900 mb-4">Full Feature Comparison Matrix</h2>
         <p className="text-gray-600 mb-6">
           Comprehensive analysis of competitive platforms across key capabilities. Gen Canopy represents the Cat 3+ offering with full enterprise features.
@@ -42,11 +42,11 @@ export function OverviewTab() {
       </div>
 
       {/* Feature Comparison Table */}
-      <div className="bg-white rounded-2xl border border-indigo-100 shadow-lg overflow-hidden">
+      <div className="bg-white rounded-2xl border border-amber-200 shadow-lg overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
+              <tr className="bg-gradient-to-r from-amber-700 to-amber-600 text-white">
                 <th className="px-6 py-4 text-left font-semibold">Platform</th>
                 <th className="px-4 py-4 text-center font-semibold">Cat.</th>
                 <th className="px-4 py-4 text-center font-semibold">Batch Gen.</th>
@@ -62,15 +62,15 @@ export function OverviewTab() {
               {platforms.map((platform, index) => (
                 <tr
                   key={index}
-                  className={`border-b border-gray-100 hover:bg-indigo-50/30 transition-colors ${
-                    platform.name === 'Gen Canopy' ? 'bg-indigo-50/50' : ''
+                  className={`border-b border-gray-100 hover:bg-amber-50/30 transition-colors ${
+                    platform.name === 'Gen Canopy' ? 'bg-amber-50/50' : ''
                   }`}
                 >
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-3">
                       <div className={`w-2 h-2 rounded-full ${platform.catColor}`}></div>
                       <span className={`font-semibold ${
-                        platform.name === 'Gen Canopy' ? 'text-indigo-900' : 'text-gray-900'
+                        platform.name === 'Gen Canopy' ? 'text-amber-900' : 'text-gray-900'
                       }`}>
                         {platform.name}
                       </span>

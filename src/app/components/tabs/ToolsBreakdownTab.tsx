@@ -1,4 +1,4 @@
-export function ToolsBreakdownTab() {
+﻿export function ToolsBreakdownTab() {
   const toolsData = [
     {
       category: 'Batch Generation',
@@ -54,7 +54,7 @@ export function ToolsBreakdownTab() {
   return (
     <div className="space-y-8">
       {/* Introduction */}
-      <div className="bg-white rounded-2xl border border-indigo-100 p-8 shadow-sm">
+      <div className="bg-white rounded-2xl border border-amber-200 p-8 shadow-sm">
         <h2 className="text-3xl font-bold text-gray-900 mb-4">Tools & Features Breakdown</h2>
         <p className="text-gray-600">
           Detailed analysis of core capabilities across the competitive landscape, organized by feature category.
@@ -64,7 +64,7 @@ export function ToolsBreakdownTab() {
       {/* Feature Breakdown */}
       <div className="space-y-6">
         {toolsData.map((tool, index) => (
-          <div key={index} className="bg-white rounded-2xl border border-indigo-100 p-6 shadow-sm">
+          <div key={index} className="bg-white rounded-2xl border border-amber-200 p-6 shadow-sm">
             <h3 className="text-xl font-bold text-gray-900 mb-2">{tool.category}</h3>
             <p className="text-gray-600 mb-4">{tool.description}</p>
 
@@ -81,7 +81,7 @@ export function ToolsBreakdownTab() {
                       key={idx}
                       className={`px-3 py-1 rounded-full text-xs font-medium ${
                         platform === 'Gen Canopy'
-                          ? 'bg-indigo-600 text-white'
+                          ? 'bg-amber-700 text-white'
                           : 'bg-green-200 text-green-900'
                       }`}
                     >
@@ -132,7 +132,7 @@ export function ToolsBreakdownTab() {
       </div>
 
       {/* Pricing Analysis */}
-      <div className="bg-white rounded-2xl border border-indigo-100 p-8 shadow-sm">
+      <div className="bg-white rounded-2xl border border-amber-200 p-8 shadow-sm">
         <h3 className="text-2xl font-bold text-gray-900 mb-6">Pricing Tier Analysis</h3>
 
         <div className="space-y-4">
@@ -145,7 +145,7 @@ export function ToolsBreakdownTab() {
                     key={idx}
                     className={`px-4 py-2 rounded-lg text-sm font-medium ${
                       platform === 'Gen Canopy'
-                        ? 'bg-indigo-600 text-white'
+                        ? 'bg-amber-700 text-white'
                         : 'bg-gray-100 text-gray-700'
                     }`}
                   >
@@ -159,27 +159,27 @@ export function ToolsBreakdownTab() {
       </div>
 
       {/* Key Takeaways */}
-      <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl border border-indigo-100 p-8">
+      <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl border border-amber-200 p-8">
         <h3 className="text-2xl font-bold text-gray-900 mb-4">Key Takeaways</h3>
         <ul className="space-y-3 text-gray-700">
           <li className="flex gap-3">
-            <span className="text-indigo-600 font-bold">1.</span>
+            <span className="text-amber-800 font-bold">1.</span>
             <span><strong>Gen Canopy is the only platform with native support across all 6 core features</strong>, establishing clear differentiation in the Cat 3+ space.</span>
           </li>
           <li className="flex gap-3">
-            <span className="text-indigo-600 font-bold">2.</span>
+            <span className="text-amber-800 font-bold">2.</span>
             <span><strong>Scene Builder remains a major differentiator</strong> with only Flair.ai offering comparable functionality, but lacking enterprise features.</span>
           </li>
           <li className="flex gap-3">
-            <span className="text-indigo-600 font-bold">3.</span>
+            <span className="text-amber-800 font-bold">3.</span>
             <span><strong>Product SKU Library support is rare</strong>, with only Kive.ai offering partial support beyond Gen Canopy.</span>
           </li>
           <li className="flex gap-3">
-            <span className="text-indigo-600 font-bold">4.</span>
+            <span className="text-amber-800 font-bold">4.</span>
             <span><strong>Agency/Enterprise pricing creates natural moat</strong> against freemium tools, focusing on high-value customer segments.</span>
           </li>
           <li className="flex gap-3">
-            <span className="text-indigo-600 font-bold">5.</span>
+            <span className="text-amber-800 font-bold">5.</span>
             <span><strong>Multi-brand support gaps</strong> across most Cat 3 competitors create opportunities for agency-focused marketing.</span>
           </li>
         </ul>
