@@ -18,6 +18,12 @@ This ensures every LLM has full context on the project's history, regardless of 
 
 <!-- Most recent entry goes at the TOP -->
 
+### Claude Code — 2026-06-22
+- Replaced the single Product Research view with 9 tabs matching the sections in the Generations Product Research Google Doc/PDF.
+- New tabs: Company Language, Path of Creation, Tables & Graphics, Images & Results (placeholder), Story Board (placeholder), To Do's.
+- Updated color scheme across all existing tabs (Competitive Analysis, Customer Feedback, Tools & Tactics) from blue/indigo to the warm amber/brown palette matching the User Flow Maps navigation.
+- All content populated from the PDF document.
+
 ### Codex - 2026-06-22
 - Set the generated logo as the browser tab icon by adding favicon and Apple touch icon links in `index.html`.
 
