@@ -19,6 +19,9 @@ This ensures every LLM has full context on the project's history, regardless of 
 <!-- Most recent entry goes at the TOP -->
 
 ### Codex - 2026-06-22
+- Set the generated logo as the browser tab icon by adding favicon and Apple touch icon links in `index.html`.
+
+### Codex - 2026-06-22
 - Generated a new logo image for the website and saved it at `public/assets/user-flow-map-logo.png`.
 - Kept the original generated image in the Codex generated-images folder and copied the project-ready version into the app.
 
