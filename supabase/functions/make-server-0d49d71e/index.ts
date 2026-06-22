@@ -232,16 +232,21 @@ const COMPETITORS = [
 async function fetchPricingFromTavily(query: string, apiKey: string): Promise<string> {
   const res = await fetch("https://api.tavily.com/search", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${apiKey}`,
+    },
     body: JSON.stringify({
-      api_key: apiKey,
       query,
       search_depth: "basic",
       max_results: 3,
       include_answer: true,
     }),
   });
-  if (!res.ok) throw new Error(`Tavily error: ${res.status}`);
+  if (!res.ok) {
+    const body = await res.text();
+    throw new Error(`Tavily ${res.status}: ${body}`);
+  }
   const data = await res.json();
   return data.answer || data.results?.[0]?.content || "Pricing information unavailable.";
 }
@@ -268,7 +273,8 @@ app.get("/make-server-0d49d71e/costs", async (c) => {
       try {
         results[comp.name] = await fetchPricingFromTavily(comp.query, apiKey);
       } catch (e: any) {
-        results[comp.name] = "Could not fetch pricing at this time.";
+        console.error(`Tavily error for ${comp.name}:`, e.message);
+        results[comp.name] = `Error: ${e.message}`;
       }
     }
 
@@ -291,7 +297,8 @@ app.post("/make-server-0d49d71e/costs/refresh", async (c) => {
       try {
         results[comp.name] = await fetchPricingFromTavily(comp.query, apiKey);
       } catch (e: any) {
-        results[comp.name] = "Could not fetch pricing at this time.";
+        console.error(`Tavily error for ${comp.name}:`, e.message);
+        results[comp.name] = `Error: ${e.message}`;
       }
     }
 
