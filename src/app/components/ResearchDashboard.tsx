@@ -1,16 +1,13 @@
 import { useState } from 'react';
-import { BarChart3, Users, MessageSquare, Wrench, Navigation, Table2, Image, Film, CheckSquare } from 'lucide-react';
+import { BarChart3, Users, MessageSquare, Wrench, Navigation, Table2 } from 'lucide-react';
 import { CompetitiveAnalysisTab } from './tabs/CompetitiveAnalysisTab';
 import { CustomerFeedbackTab } from './tabs/CustomerFeedbackTab';
 import { CompanyLanguageTab } from './tabs/CompanyLanguageTab';
 import { ToolsBreakdownTab } from './tabs/ToolsBreakdownTab';
 import { PathOfCreationTab } from './tabs/PathOfCreationTab';
 import { TablesGraphicsTab } from './tabs/TablesGraphicsTab';
-import { ImagesResultsTab } from './tabs/ImagesResultsTab';
-import { StoryBoardTab } from './tabs/StoryBoardTab';
-import { TodosTab } from './tabs/TodosTab';
 
-type TabType = 'competitive' | 'feedback' | 'language' | 'tools' | 'path' | 'tables' | 'images' | 'storyboard' | 'todos';
+type TabType = 'competitive' | 'feedback' | 'language' | 'tools' | 'path' | 'tables';
 
 const tabs: { id: TabType; label: string; icon: React.ElementType }[] = [
   { id: 'competitive', label: 'Competitive Analysis', icon: BarChart3 },
@@ -19,9 +16,6 @@ const tabs: { id: TabType; label: string; icon: React.ElementType }[] = [
   { id: 'tools', label: 'Tools, Models & Tactics', icon: Wrench },
   { id: 'path', label: 'Path of Creation', icon: Navigation },
   { id: 'tables', label: 'Tables & Graphics', icon: Table2 },
-  { id: 'images', label: 'Images & Results', icon: Image },
-  { id: 'storyboard', label: 'Story Board', icon: Film },
-  { id: 'todos', label: "To Do's", icon: CheckSquare },
 ];
 
 const NJ = {
@@ -85,9 +79,6 @@ export function ResearchDashboard() {
           {activeTab === 'tools'        && <ToolsBreakdownTab />}
           {activeTab === 'path'         && <PathOfCreationTab />}
           {activeTab === 'tables'       && <TablesGraphicsTab />}
-          {activeTab === 'images'       && <ImagesResultsTab />}
-          {activeTab === 'storyboard'   && <StoryBoardTab />}
-          {activeTab === 'todos'        && <TodosTab />}
         </div>
       </div>
     </div>
