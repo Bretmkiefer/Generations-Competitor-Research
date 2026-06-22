@@ -1,6 +1,7 @@
 node_modules/
 .npm-cache/
 .supabase/
+supabase/.temp/
 dist/
 tsconfig.tsbuildinfo
 .env
