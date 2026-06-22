@@ -1,0 +1,4 @@
+project_id = "your-supabase-project-id"
+
+[functions.make-server-0d49d71e]
+verify_jwt = false
