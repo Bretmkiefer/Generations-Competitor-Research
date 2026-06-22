@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { WebsiteTracker } from './components/WebsiteTracker';
 import { ResearchDashboard } from './components/ResearchDashboard';
+import { CostsDashboard } from './components/CostsDashboard';
 import { Login } from './components/Login';
-import { FileText, Map, Download } from 'lucide-react';
+import { FileText, Map, Download, DollarSign } from 'lucide-react';
 
 // Source file contents bundled at build time via Vite's ?raw imports
 import appSrc from './App.tsx?raw';
@@ -26,7 +27,7 @@ import indexCss from '../styles/index.css?raw';
 import tailwindCss from '../styles/tailwind.css?raw';
 import serverSrc from '../../supabase/functions/make-server-0d49d71e/index.ts?raw';
 
-type ViewType = 'tracker' | 'research';
+type ViewType = 'tracker' | 'research' | 'costs';
 
 const SOURCE_FILES: Record<string, string> = {
   'src/app/App.tsx': appSrc,
@@ -154,6 +155,19 @@ export default function App() {
             <FileText className="w-3.5 h-3.5" />
             Product Research
           </button>
+          <button
+            onClick={() => setActiveView('costs')}
+            className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium transition-all"
+            style={{
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
+              background: activeView === 'costs' ? NJ.activeBg : 'transparent',
+              color: activeView === 'costs' ? '#fff' : NJ.inactiveText,
+              border: activeView === 'costs' ? `1px solid ${NJ.activeBorder}` : '1px solid transparent',
+            }}
+          >
+            <DollarSign className="w-3.5 h-3.5" />
+            Costs
+          </button>
 
           {/* Spacer */}
           <div className="flex-1" />
@@ -181,7 +195,9 @@ export default function App() {
 
       {/* Content */}
       <div className="flex-1 overflow-hidden">
-        {activeView === 'tracker' ? <WebsiteTracker /> : <ResearchDashboard />}
+        {activeView === 'tracker' && <WebsiteTracker />}
+        {activeView === 'research' && <ResearchDashboard />}
+        {activeView === 'costs' && <CostsDashboard />}
       </div>
     </div>
   );
