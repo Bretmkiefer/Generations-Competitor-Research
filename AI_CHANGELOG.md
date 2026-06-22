@@ -18,6 +18,10 @@ This ensures every LLM has full context on the project's history, regardless of 
 
 <!-- Most recent entry goes at the TOP -->
 
+### Codex - 2026-06-22
+- Added `CODEX.md` so Codex sessions have an explicit read-before-edit and log-after-edit rule.
+- Documented that the OneDrive project folder is the source of truth for future edits and GitHub pushes.
+
 ### Claude Code — 2026-06-22
 - Created this file (`AI_CHANGELOG.md`) to serve as a shared context log across all LLMs working on this project.
 - Created `CLAUDE.md` to enforce the read-before-edit, log-after-edit rule for Claude Code sessions.
