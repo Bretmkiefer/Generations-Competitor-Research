@@ -66,6 +66,34 @@ https://<project-id>.supabase.co/functions/v1/make-server-0d49d71e
 
 The Edge Function uses `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY`, which Supabase provides automatically in the hosted function environment.
 
+## Transfer Existing Data To A New Supabase Project
+
+Keep the exported JSON in `data/user-flow-maps-data-2026-06-22.json`.
+
+Create `.env.supabase` from `.env.supabase.example`:
+
+```env
+SUPABASE_PROJECT_ID=your-supabase-project-id
+SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
+SEED_DATA_FILE=data/user-flow-maps-data-2026-06-22.json
+```
+
+Find the service role key in Supabase:
+
+```text
+Project Settings -> API -> service_role key
+```
+
+Never commit `.env.supabase`; it contains a private admin key.
+
+After `supabase db push` has created the table, seed the new database:
+
+```bash
+npm run seed:supabase
+```
+
+This writes the JSON export into the `websites` key used by the app.
+
 ## GitHub
 
 ```bash
