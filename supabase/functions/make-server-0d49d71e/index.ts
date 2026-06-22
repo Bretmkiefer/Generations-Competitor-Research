@@ -205,6 +205,107 @@ app.get("/make-server-0d49d71e/api/websites/:id", async (c) => {
   }
 });
 
+// ─── Costs / Competitor Pricing ───────────────────────────────────────────────
+
+const COSTS_CACHE_KEY = "costs_pricing_cache";
+const COSTS_TTL_MS = 24 * 60 * 60 * 1000; // 24 hours
+
+const COMPETITORS = [
+  { name: "Canva", query: "Canva AI pricing plans 2026" },
+  { name: "Adobe Firefly", query: "Adobe Firefly pricing plans 2026" },
+  { name: "AdCreative.ai", query: "AdCreative.ai pricing plans 2026" },
+  { name: "ChatGPT / GPT-4o", query: "ChatGPT Plus pricing plans 2026" },
+  { name: "Midjourney v7", query: "Midjourney pricing plans 2026" },
+  { name: "DALL-E 3", query: "DALL-E 3 OpenAI pricing plans 2026" },
+  { name: "Stable Diffusion", query: "Stable Diffusion pricing cost 2026" },
+  { name: "DaVinci.ai", query: "DaVinci.ai pricing plans 2026" },
+  { name: "Runway ML", query: "Runway ML pricing plans 2026" },
+  { name: "Kling AI", query: "Kling AI pricing plans 2026" },
+  { name: "Claid.ai", query: "Claid.ai pricing plans 2026" },
+  { name: "Nightjar", query: "Nightjar AI photography pricing plans 2026" },
+  { name: "Flair.ai", query: "Flair.ai pricing plans 2026" },
+  { name: "Photoroom", query: "Photoroom pricing plans 2026" },
+  { name: "Pebblely", query: "Pebblely pricing plans 2026" },
+  { name: "Kive.ai", query: "Kive.ai pricing plans 2026" },
+];
+
+async function fetchPricingFromTavily(query: string, apiKey: string): Promise<string> {
+  const res = await fetch("https://api.tavily.com/search", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      api_key: apiKey,
+      query,
+      search_depth: "basic",
+      max_results: 3,
+      include_answer: true,
+    }),
+  });
+  if (!res.ok) throw new Error(`Tavily error: ${res.status}`);
+  const data = await res.json();
+  return data.answer || data.results?.[0]?.content || "Pricing information unavailable.";
+}
+
+app.get("/make-server-0d49d71e/costs", async (c) => {
+  try {
+    const cached: any = await kv.get(COSTS_CACHE_KEY);
+    const now = Date.now();
+
+    if (cached && cached.fetchedAt && (now - cached.fetchedAt) < COSTS_TTL_MS) {
+      return c.json({ ...cached, fromCache: true });
+    }
+
+    // Cache is stale — fetch fresh data
+    const apiKey = Deno.env.get("TAVILY_API_KEY");
+    if (!apiKey) {
+      // Return stale cache if key missing rather than crashing
+      if (cached) return c.json({ ...cached, fromCache: true, warning: "TAVILY_API_KEY not set" });
+      return c.json({ error: "TAVILY_API_KEY secret not configured in Supabase" }, 503);
+    }
+
+    const results: Record<string, string> = {};
+    for (const comp of COMPETITORS) {
+      try {
+        results[comp.name] = await fetchPricingFromTavily(comp.query, apiKey);
+      } catch (e: any) {
+        results[comp.name] = "Could not fetch pricing at this time.";
+      }
+    }
+
+    const payload = { pricing: results, fetchedAt: now };
+    await kv.set(COSTS_CACHE_KEY, payload);
+    return c.json({ ...payload, fromCache: false });
+  } catch (error: any) {
+    console.error("Error in /costs:", error);
+    return c.json({ error: "Failed to fetch costs data", details: error?.message }, 500);
+  }
+});
+
+app.post("/make-server-0d49d71e/costs/refresh", async (c) => {
+  try {
+    const apiKey = Deno.env.get("TAVILY_API_KEY");
+    if (!apiKey) return c.json({ error: "TAVILY_API_KEY secret not configured in Supabase" }, 503);
+
+    const results: Record<string, string> = {};
+    for (const comp of COMPETITORS) {
+      try {
+        results[comp.name] = await fetchPricingFromTavily(comp.query, apiKey);
+      } catch (e: any) {
+        results[comp.name] = "Could not fetch pricing at this time.";
+      }
+    }
+
+    const payload = { pricing: results, fetchedAt: Date.now() };
+    await kv.set(COSTS_CACHE_KEY, payload);
+    return c.json({ ...payload, fromCache: false });
+  } catch (error: any) {
+    console.error("Error in /costs/refresh:", error);
+    return c.json({ error: "Failed to refresh costs data", details: error?.message }, 500);
+  }
+});
+
+// ──────────────────────────────────────────────────────────────────────────────
+
 app.all("*", (c) => {
   console.log("Unmatched route:", c.req.method, c.req.url);
   return c.json({ error: "Route not found", method: c.req.method, path: c.req.url }, 404);
