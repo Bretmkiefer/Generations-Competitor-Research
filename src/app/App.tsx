@@ -18,7 +18,7 @@ import fontsCss from '../styles/fonts.css?raw';
 import themeCss from '../styles/theme.css?raw';
 import indexCss from '../styles/index.css?raw';
 import tailwindCss from '../styles/tailwind.css?raw';
-import serverSrc from '../../supabase/functions/make-server-0d49d71e/index.tsx?raw';
+import serverSrc from '../../supabase/functions/make-server-0d49d71e/index.ts?raw';
 
 type ViewType = 'tracker' | 'research';
 
@@ -36,7 +36,7 @@ const SOURCE_FILES: Record<string, string> = {
   'src/styles/theme.css': themeCss,
   'src/styles/index.css': indexCss,
   'src/styles/tailwind.css': tailwindCss,
-  'supabase/functions/make-server-0d49d71e/index.tsx': serverSrc,
+  'supabase/functions/make-server-0d49d71e/index.ts': serverSrc,
 };
 
 async function exportSourceCode() {

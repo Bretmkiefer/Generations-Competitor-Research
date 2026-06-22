@@ -1,4 +1,4 @@
-project_id = "your-supabase-project-id"
+project_id = "jdqgprtljvfrxucegyzy"
 
 [functions.make-server-0d49d71e]
 verify_jwt = false

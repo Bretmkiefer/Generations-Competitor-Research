@@ -1,7 +1,7 @@
 import { Hono } from "npm:hono";
 import { cors } from "npm:hono/cors";
 import { logger } from "npm:hono/logger";
-import * as kv from "./kv_store.tsx";
+import * as kv from "./kv_store.ts";
 
 const app = new Hono();
 
@@ -16,19 +16,17 @@ app.use(
   }),
 );
 
-app.use('*', logger(console.log));
+app.use("*", logger(console.log));
 
 app.onError((err, c) => {
   console.error("Server error:", err);
   return c.json({ error: "Internal server error", details: err.message }, 500);
 });
 
-// Health check
 app.get("/make-server-0d49d71e/health", (c) => {
   return c.json({ status: "ok", timestamp: new Date().toISOString() });
 });
 
-// Get all websites
 app.get("/make-server-0d49d71e/websites", async (c) => {
   try {
     const websites = await kv.get("websites");
@@ -45,17 +43,15 @@ app.get("/make-server-0d49d71e/websites", async (c) => {
   }
 });
 
-// Save all websites
 app.post("/make-server-0d49d71e/websites", async (c) => {
   try {
     const body = await c.req.json();
     const { websites } = body;
 
     if (!Array.isArray(websites)) {
-      return c.json({ error: "Invalid data format — expected array of websites" }, 400);
+      return c.json({ error: "Invalid data format - expected array of websites" }, 400);
     }
 
-    // Check payload size and warn if large
     const payloadSize = JSON.stringify(websites).length;
     if (payloadSize > 5_000_000) {
       await logError({
@@ -81,8 +77,6 @@ app.post("/make-server-0d49d71e/websites", async (c) => {
   }
 });
 
-// --- Error Tracking ---
-
 interface ErrorEntry {
   id: string;
   timestamp: string;
@@ -100,7 +94,6 @@ async function logError(entry: Omit<ErrorEntry, "id" | "timestamp">) {
       timestamp: new Date().toISOString(),
       ...entry,
     };
-    // Keep last 100 errors
     const updated = [newEntry, ...existing].slice(0, 100);
     await kv.set("error_log", updated);
   } catch (e) {
@@ -112,7 +105,7 @@ function getErrorExplanation(type: string, message: string): string {
   const msg = message.toLowerCase();
 
   if (msg.includes("quota") || msg.includes("storage full") || msg.includes("payload too large")) {
-    return "The data payload is too large — most likely because screenshots are stored as full base64 strings. To fix: reduce image resolution before upload, or remove old screenshots from entries.";
+    return "The data payload is too large - most likely because screenshots are stored as full base64 strings. To fix: reduce image resolution before upload, or remove old screenshots from entries.";
   }
   if (msg.includes("timeout") || msg.includes("aborted") || msg.includes("abort")) {
     return "The request timed out before the server responded. This usually happens when saving very large amounts of data. Try reducing image sizes or splitting data into smaller saves.";
@@ -135,7 +128,6 @@ function getErrorExplanation(type: string, message: string): string {
   return "An unexpected error occurred. Check the error message for details and try the operation again.";
 }
 
-// POST /errors — log an error from the frontend
 app.post("/make-server-0d49d71e/errors", async (c) => {
   try {
     const body = await c.req.json();
@@ -155,7 +147,6 @@ app.post("/make-server-0d49d71e/errors", async (c) => {
   }
 });
 
-// GET /errors — retrieve recent errors
 app.get("/make-server-0d49d71e/errors", async (c) => {
   try {
     const errors: ErrorEntry[] = (await kv.get("error_log")) || [];
@@ -167,7 +158,6 @@ app.get("/make-server-0d49d71e/errors", async (c) => {
   }
 });
 
-// DELETE /errors — clear error log
 app.delete("/make-server-0d49d71e/errors", async (c) => {
   try {
     await kv.set("error_log", []);
@@ -177,9 +167,6 @@ app.delete("/make-server-0d49d71e/errors", async (c) => {
   }
 });
 
-// --- Data API (for external access / Claude) ---
-
-// GET /api/summary — high-level stats
 app.get("/make-server-0d49d71e/api/summary", async (c) => {
   try {
     const websites: any[] = (await kv.get("websites")) || [];
@@ -203,7 +190,6 @@ app.get("/make-server-0d49d71e/api/summary", async (c) => {
   }
 });
 
-// GET /api/websites/:id — get one website detail
 app.get("/make-server-0d49d71e/api/websites/:id", async (c) => {
   try {
     const id = c.req.param("id");
@@ -212,7 +198,6 @@ app.get("/make-server-0d49d71e/api/websites/:id", async (c) => {
     if (!website) {
       return c.json({ error: "Website not found" }, 404);
     }
-    // Strip large image data for lightweight response
     const { images, ...rest } = website;
     return c.json({ ...rest, screenshot_count: images?.length || 0 });
   } catch (error: any) {
@@ -220,7 +205,6 @@ app.get("/make-server-0d49d71e/api/websites/:id", async (c) => {
   }
 });
 
-// Catch-all
 app.all("*", (c) => {
   console.log("Unmatched route:", c.req.method, c.req.url);
   return c.json({ error: "Route not found", method: c.req.method, path: c.req.url }, 404);
@@ -233,7 +217,7 @@ const handler = async (req: Request) => {
     console.error("Uncaught error in handler:", error);
     return new Response(
       JSON.stringify({ error: "Server error", details: String(error) }),
-      { status: 500, headers: { "Content-Type": "application/json" } }
+      { status: 500, headers: { "Content-Type": "application/json" } },
     );
   }
 };
