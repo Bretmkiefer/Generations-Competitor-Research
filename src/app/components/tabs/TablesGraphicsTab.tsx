@@ -32,6 +32,23 @@ const tacticsMatrix1 = [
   { tool: 'Video Generation', gen: '·', claid: '✓', nightjar: '·', kive: '·', flair: '✓', photoroom: '·', pebblely: '·' },
 ];
 
+const tacticsMatrix2 = [
+  { tool: 'Custom Model Training', gen: '✓', canva: '·', firefly: '✓', adcreative: '·', chatgpt: '·', dalle: '·', midjourney: '·', stable: '✓', davinci: '·', runway: '·', kling: '·' },
+  { tool: 'Batch Processing', gen: '✓', canva: '~', firefly: '~', adcreative: '✓', chatgpt: '·', dalle: '~', midjourney: '·', stable: '~', davinci: '·', runway: '·', kling: '·' },
+  { tool: 'Inpainting / Region Edit', gen: '·', canva: '✓', firefly: '✓', adcreative: '·', chatgpt: '✓', dalle: '✓', midjourney: '✓', stable: '✓', davinci: '·', runway: '✓', kling: '·' },
+  { tool: 'Style Presets / Lock', gen: '✓', canva: '~', firefly: '✓', adcreative: '~', chatgpt: '·', dalle: '·', midjourney: '✓', stable: '~', davinci: '·', runway: '·', kling: '·' },
+  { tool: 'Composition Control', gen: '✓', canva: '·', firefly: '✓', adcreative: '·', chatgpt: '·', dalle: '·', midjourney: '·', stable: '✓', davinci: '·', runway: '·', kling: '·' },
+  { tool: 'Scene Builder', gen: '✓', canva: '·', firefly: '·', adcreative: '·', chatgpt: '·', dalle: '·', midjourney: '·', stable: '·', davinci: '·', runway: '·', kling: '·' },
+  { tool: 'Product Preservation', gen: '✓', canva: '·', firefly: '·', adcreative: '·', chatgpt: '·', dalle: '·', midjourney: '·', stable: '·', davinci: '·', runway: '·', kling: '·' },
+  { tool: 'Multi-Brand Workspace', gen: '✓', canva: '~', firefly: '~', adcreative: '~', chatgpt: '·', dalle: '·', midjourney: '·', stable: '·', davinci: '·', runway: '~', kling: '·' },
+  { tool: 'API / Zapier', gen: '·', canva: '·', firefly: '✓', adcreative: '·', chatgpt: '·', dalle: '✓', midjourney: '·', stable: '·', davinci: '·', runway: '✓', kling: '✓' },
+  { tool: 'Marketplace Templates', gen: '·', canva: '·', firefly: '·', adcreative: '✓', chatgpt: '·', dalle: '·', midjourney: '·', stable: '·', davinci: '·', runway: '·', kling: '·' },
+  { tool: 'Text Label Preservation', gen: '·', canva: '·', firefly: '·', adcreative: '·', chatgpt: '✓', dalle: '✓', midjourney: '·', stable: '·', davinci: '·', runway: '·', kling: '·' },
+  { tool: 'Color Variant Recoloring', gen: '·', canva: '·', firefly: '·', adcreative: '·', chatgpt: '·', dalle: '·', midjourney: '·', stable: '·', davinci: '·', runway: '·', kling: '·' },
+  { tool: 'Shopify Integration', gen: '·', canva: '·', firefly: '·', adcreative: '·', chatgpt: '·', dalle: '·', midjourney: '·', stable: '·', davinci: '·', runway: '·', kling: '·' },
+  { tool: 'Video Generation', gen: '·', canva: '·', firefly: '·', adcreative: '·', chatgpt: '·', dalle: '·', midjourney: '·', stable: '·', davinci: '✓', runway: '✓', kling: '✓' },
+];
+
 const threatScores = [
   { name: 'Gen Canopy', score: 10, threat: 'Market Leader', cat: 'Cat 3+', isGenerations: true },
   { name: 'Claid.ai', score: 7.5, threat: 'High Threat', cat: 'Cat 3' },
@@ -183,6 +200,51 @@ export function TablesGraphicsTab() {
                 <td style={{ ...tdBase, ...cellStyle(row.flair) }}>{row.flair}</td>
                 <td style={{ ...tdBase, ...cellStyle(row.photoroom) }}>{row.photoroom}</td>
                 <td style={{ ...tdBase, ...cellStyle(row.pebblely) }}>{row.pebblely}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <div style={{ marginTop: '12px', fontSize: '12px', color: 'hsl(30,20%,55%)' }}>
+          ✓ = native capability &nbsp;·&nbsp; ~ = partial / workaround &nbsp;·&nbsp; · = not available
+        </div>
+      </div>
+
+      {/* Tools & Tactics Breakdown Part 2 */}
+      <div style={{ background: '#fff', border: '1px solid hsl(30,40%,85%)', borderRadius: '14px', padding: '24px', overflowX: 'auto' }}>
+        <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'hsl(30,40%,22%)', marginBottom: '4px' }}>Tools & Tactics Breakdown — Part 2</h3>
+        <p style={{ fontSize: '13px', color: 'hsl(30,20%,50%)', marginBottom: '20px' }}>Generations + Category 1 & 2 platforms (Canva, Adobe Firefly, AdCreative, ChatGPT, DALL-E, Midjourney, Stable Diffusion, DaVinci.ai, Runway ML, Kling AI)</p>
+        <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '900px' }}>
+          <thead>
+            <tr>
+              <th style={{ ...thBase, textAlign: 'left' }}>Tool / Platform</th>
+              <th style={thBase}>Generations</th>
+              <th style={thBase}>Canva</th>
+              <th style={thBase}>Adobe Firefly</th>
+              <th style={thBase}>AdCreative</th>
+              <th style={thBase}>ChatGPT</th>
+              <th style={thBase}>DALL-E</th>
+              <th style={thBase}>Midjourney</th>
+              <th style={thBase}>Stable Diff.</th>
+              <th style={thBase}>DaVinci.ai</th>
+              <th style={thBase}>Runway ML</th>
+              <th style={thBase}>Kling AI</th>
+            </tr>
+          </thead>
+          <tbody>
+            {tacticsMatrix2.map((row) => (
+              <tr key={row.tool}>
+                <td style={{ ...tdBase, textAlign: 'left', fontWeight: 500, color: 'hsl(30,30%,30%)' }}>{row.tool}</td>
+                <td style={{ ...tdBase, ...cellStyle(row.gen, true) }}>{row.gen}</td>
+                <td style={{ ...tdBase, ...cellStyle(row.canva) }}>{row.canva}</td>
+                <td style={{ ...tdBase, ...cellStyle(row.firefly) }}>{row.firefly}</td>
+                <td style={{ ...tdBase, ...cellStyle(row.adcreative) }}>{row.adcreative}</td>
+                <td style={{ ...tdBase, ...cellStyle(row.chatgpt) }}>{row.chatgpt}</td>
+                <td style={{ ...tdBase, ...cellStyle(row.dalle) }}>{row.dalle}</td>
+                <td style={{ ...tdBase, ...cellStyle(row.midjourney) }}>{row.midjourney}</td>
+                <td style={{ ...tdBase, ...cellStyle(row.stable) }}>{row.stable}</td>
+                <td style={{ ...tdBase, ...cellStyle(row.davinci) }}>{row.davinci}</td>
+                <td style={{ ...tdBase, ...cellStyle(row.runway) }}>{row.runway}</td>
+                <td style={{ ...tdBase, ...cellStyle(row.kling) }}>{row.kling}</td>
               </tr>
             ))}
           </tbody>
