@@ -18,6 +18,20 @@ This ensures every LLM has full context on the project's history, regardless of 
 
 <!-- Most recent entry goes at the TOP -->
 
+### Claude Code — 2026-06-23 (2)
+- Added `GET /pricing` and `POST /pricing` endpoints to the Supabase Edge Function, storing pricing data in the KV store.
+- Rebuilt CostsDashboard to fetch live pricing from the API on load, falling back to hardcoded defaults if unavailable.
+- Added inline editing: clicking the pencil icon on any model card makes fields editable; Save pushes the update to the API and persists it for all future loads.
+- Status indicator shows whether data is live from API, showing defaults, or unreachable.
+- Refresh button re-fetches from API at any time.
+
+### Claude Code — 2026-06-23
+- Built out the Costs tab (CostsDashboard.tsx) from its placeholder state into a full model pricing comparison.
+- Added 6 Google Gemini/Imagen image generation models: Gemini 3.1 Flash Image, Gemini 3 Pro Image, Gemini 2.5 Flash Image, and Imagen 4 (Fast / Standard / Ultra).
+- Each card shows per-image price by resolution tier, batch pricing (50% off), and input/output token rates where applicable.
+- Imagen 4 models are flagged as deprecated (shutting down Aug 17, 2026).
+- Pricing sourced from the official Google AI Developer API pricing page.
+
 ### Claude Code — 2026-06-22
 - Replaced the single Product Research view with 9 tabs matching the sections in the Generations Product Research Google Doc/PDF.
 - New tabs: Company Language, Path of Creation, Tables & Graphics, Images & Results (placeholder), Story Board (placeholder), To Do's.

@@ -190,6 +190,31 @@ app.get("/make-server-0d49d71e/api/summary", async (c) => {
   }
 });
 
+app.get("/make-server-0d49d71e/pricing", async (c) => {
+  try {
+    const pricing = await kv.get("pricing");
+    return c.json({ pricing: pricing || null });
+  } catch (error: any) {
+    console.error("Error fetching pricing:", error);
+    return c.json({ error: "Failed to fetch pricing", details: error?.message }, 500);
+  }
+});
+
+app.post("/make-server-0d49d71e/pricing", async (c) => {
+  try {
+    const body = await c.req.json();
+    const { models, updatedAt } = body;
+    if (!Array.isArray(models)) {
+      return c.json({ error: "Invalid data format - expected models array" }, 400);
+    }
+    await kv.set("pricing", { models, updatedAt });
+    return c.json({ success: true, updatedAt });
+  } catch (error: any) {
+    console.error("Error saving pricing:", error);
+    return c.json({ error: "Failed to save pricing", details: error?.message }, 500);
+  }
+});
+
 app.get("/make-server-0d49d71e/api/websites/:id", async (c) => {
   try {
     const id = c.req.param("id");
