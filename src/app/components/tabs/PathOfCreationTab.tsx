@@ -54,6 +54,15 @@ const platforms = [
     keyLimitation: 'No structural memory whatsoever between sessions. Closing the conversation window resets everything. At catalog scale this is not a workflow — it is repeated manual effort with no compounding efficiency.',
   },
   {
+    name: 'Krea AI',
+    category: 'Cat 2',
+    firstTime: 'Sign up → choose a tool such as Image, Realtime, Edit, Upscale, Video, or 3D → type a prompt or start drawing in the realtime canvas → optionally add image/style references or train a LoRA for a product/style → generate → enhance, edit, or download.',
+    returning: 'Open existing assets or trained LoRA → choose Image, Realtime, Nodes, or an editing workflow → reuse the model/style reference → generate or automate a batch through Nodes/Apps → download. Returning flow improves once the user has organized assets and trained models.',
+    uiApproach: 'Suite-first and realtime-first. Krea behaves like a creative AI command center: image, video, 3D, enhancement, realtime canvas, asset management, and model training live together. It gives more control than a chat tool, but less product-production structure than a SKU or recipe-driven platform.',
+    clicks: '4–7 clicks, plus LoRA setup when product consistency is needed',
+    keyLimitation: 'Power is broad rather than product-specific. Krea can train products/styles and manage assets, but it does not provide a native SKU library, saved product photography recipe system, or e-commerce approval workflow.',
+  },
+  {
     name: 'Stable Diffusion',
     category: 'Cat 2',
     firstTime: 'Download and install AUTOMATIC1111 or ComfyUI (30–90 minutes depending on hardware and technical skill) → download a base model → configure settings → type prompt → generate → download.',

@@ -1,6 +1,6 @@
 const platforms = [
   'Canva', 'Adobe Firefly', 'AdCreative.ai', 'ChatGPT / GPT-4o',
-  'MidJourney V7', 'DALL-E 3 (OpenAI)', 'Stable Diffusion', 'DaVinci.ai',
+  'MidJourney V7', 'DALL-E 3 (OpenAI)', 'Krea AI', 'Stable Diffusion', 'DaVinci.ai',
   'Runway', 'Kling AI', 'Claid.ai', 'NightJar', 'Flair.ai',
   'Photoroom', 'Pebblely', 'Kive.ai',
 ];

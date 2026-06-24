@@ -5,6 +5,7 @@ const featureMatrix = [
   { platform: 'AdCreative.ai', cat: 'Cat 1', batchGen: '✓', brandLock: '~', sceneBuilder: '✗', productSKU: '✗', stylePresets: '~', multiBrand: '~', pricing: 'Tiered subscription' },
   { platform: 'ChatGPT / GPT-4o', cat: 'Cat 2', batchGen: '✗', brandLock: '✗', sceneBuilder: '✗', productSKU: '✗', stylePresets: '✗', multiBrand: '✗', pricing: 'Free / $20/mo' },
   { platform: 'Midjourney v7', cat: 'Cat 2', batchGen: '✗', brandLock: '✗', sceneBuilder: '✗', productSKU: '✗', stylePresets: '~', multiBrand: '✗', pricing: '$10–$120/mo' },
+  { platform: 'Krea AI', cat: 'Cat 2', batchGen: '~', brandLock: '~', sceneBuilder: '~', productSKU: '✗', stylePresets: '✓', multiBrand: '~', pricing: 'Free–$200/mo + enterprise' },
   { platform: 'Stable Diffusion', cat: 'Cat 2', batchGen: '~', brandLock: '✗', sceneBuilder: '✗', productSKU: '✗', stylePresets: '~', multiBrand: '✗', pricing: 'Free (self-hosted)' },
   { platform: 'Claid.ai', cat: 'Cat 3', batchGen: '✓', brandLock: '✓', sceneBuilder: '~', productSKU: '~', stylePresets: '✓', multiBrand: '~', pricing: '$9–$49/mo + API' },
   { platform: 'Nightjar', cat: 'Cat 3', batchGen: '✓', brandLock: '✓', sceneBuilder: '~', productSKU: '~', stylePresets: '✓', multiBrand: '✗', pricing: '$25–$50/mo' },
@@ -33,20 +34,20 @@ const tacticsMatrix1 = [
 ];
 
 const tacticsMatrix2 = [
-  { tool: 'Custom Model Training', gen: '✓', canva: '·', firefly: '✓', adcreative: '·', chatgpt: '·', dalle: '·', midjourney: '·', stable: '✓', davinci: '·', runway: '·', kling: '·' },
-  { tool: 'Batch Processing', gen: '✓', canva: '~', firefly: '~', adcreative: '✓', chatgpt: '·', dalle: '~', midjourney: '·', stable: '~', davinci: '·', runway: '·', kling: '·' },
-  { tool: 'Inpainting / Region Edit', gen: '·', canva: '✓', firefly: '✓', adcreative: '·', chatgpt: '✓', dalle: '✓', midjourney: '✓', stable: '✓', davinci: '·', runway: '✓', kling: '·' },
-  { tool: 'Style Presets / Lock', gen: '✓', canva: '~', firefly: '✓', adcreative: '~', chatgpt: '·', dalle: '·', midjourney: '✓', stable: '~', davinci: '·', runway: '·', kling: '·' },
-  { tool: 'Composition Control', gen: '✓', canva: '·', firefly: '✓', adcreative: '·', chatgpt: '·', dalle: '·', midjourney: '·', stable: '✓', davinci: '·', runway: '·', kling: '·' },
-  { tool: 'Scene Builder', gen: '✓', canva: '·', firefly: '·', adcreative: '·', chatgpt: '·', dalle: '·', midjourney: '·', stable: '·', davinci: '·', runway: '·', kling: '·' },
-  { tool: 'Product Preservation', gen: '✓', canva: '·', firefly: '·', adcreative: '·', chatgpt: '·', dalle: '·', midjourney: '·', stable: '·', davinci: '·', runway: '·', kling: '·' },
-  { tool: 'Multi-Brand Workspace', gen: '✓', canva: '~', firefly: '~', adcreative: '~', chatgpt: '·', dalle: '·', midjourney: '·', stable: '·', davinci: '·', runway: '~', kling: '·' },
-  { tool: 'API / Zapier', gen: '·', canva: '·', firefly: '✓', adcreative: '·', chatgpt: '·', dalle: '✓', midjourney: '·', stable: '·', davinci: '·', runway: '✓', kling: '✓' },
-  { tool: 'Marketplace Templates', gen: '·', canva: '·', firefly: '·', adcreative: '✓', chatgpt: '·', dalle: '·', midjourney: '·', stable: '·', davinci: '·', runway: '·', kling: '·' },
-  { tool: 'Text Label Preservation', gen: '·', canva: '·', firefly: '·', adcreative: '·', chatgpt: '✓', dalle: '✓', midjourney: '·', stable: '·', davinci: '·', runway: '·', kling: '·' },
-  { tool: 'Color Variant Recoloring', gen: '·', canva: '·', firefly: '·', adcreative: '·', chatgpt: '·', dalle: '·', midjourney: '·', stable: '·', davinci: '·', runway: '·', kling: '·' },
-  { tool: 'Shopify Integration', gen: '·', canva: '·', firefly: '·', adcreative: '·', chatgpt: '·', dalle: '·', midjourney: '·', stable: '·', davinci: '·', runway: '·', kling: '·' },
-  { tool: 'Video Generation', gen: '·', canva: '·', firefly: '·', adcreative: '·', chatgpt: '·', dalle: '·', midjourney: '·', stable: '·', davinci: '✓', runway: '✓', kling: '✓' },
+  { tool: 'Custom Model Training', gen: '✓', canva: '·', firefly: '✓', adcreative: '·', chatgpt: '·', dalle: '·', midjourney: '·', krea: '✓', stable: '✓', davinci: '·', runway: '·', kling: '·' },
+  { tool: 'Batch Processing', gen: '✓', canva: '~', firefly: '~', adcreative: '✓', chatgpt: '·', dalle: '~', midjourney: '·', krea: '~', stable: '~', davinci: '·', runway: '·', kling: '·' },
+  { tool: 'Inpainting / Region Edit', gen: '·', canva: '✓', firefly: '✓', adcreative: '·', chatgpt: '✓', dalle: '✓', midjourney: '✓', krea: '✓', stable: '✓', davinci: '·', runway: '✓', kling: '·' },
+  { tool: 'Style Presets / Lock', gen: '✓', canva: '~', firefly: '✓', adcreative: '~', chatgpt: '·', dalle: '·', midjourney: '✓', krea: '✓', stable: '~', davinci: '·', runway: '·', kling: '·' },
+  { tool: 'Composition Control', gen: '✓', canva: '·', firefly: '✓', adcreative: '·', chatgpt: '·', dalle: '·', midjourney: '·', krea: '~', stable: '✓', davinci: '·', runway: '·', kling: '·' },
+  { tool: 'Scene Builder', gen: '✓', canva: '·', firefly: '·', adcreative: '·', chatgpt: '·', dalle: '·', midjourney: '·', krea: '~', stable: '·', davinci: '·', runway: '·', kling: '·' },
+  { tool: 'Product Preservation', gen: '✓', canva: '·', firefly: '·', adcreative: '·', chatgpt: '·', dalle: '·', midjourney: '·', krea: '~', stable: '·', davinci: '·', runway: '·', kling: '·' },
+  { tool: 'Multi-Brand Workspace', gen: '✓', canva: '~', firefly: '~', adcreative: '~', chatgpt: '·', dalle: '·', midjourney: '·', krea: '~', stable: '·', davinci: '·', runway: '~', kling: '·' },
+  { tool: 'API / Zapier', gen: '·', canva: '·', firefly: '✓', adcreative: '·', chatgpt: '·', dalle: '✓', midjourney: '·', krea: '✓', stable: '·', davinci: '·', runway: '✓', kling: '✓' },
+  { tool: 'Marketplace Templates', gen: '·', canva: '·', firefly: '·', adcreative: '✓', chatgpt: '·', dalle: '·', midjourney: '·', krea: '·', stable: '·', davinci: '·', runway: '·', kling: '·' },
+  { tool: 'Text Label Preservation', gen: '·', canva: '·', firefly: '·', adcreative: '·', chatgpt: '✓', dalle: '✓', midjourney: '·', krea: '·', stable: '·', davinci: '·', runway: '·', kling: '·' },
+  { tool: 'Color Variant Recoloring', gen: '·', canva: '·', firefly: '·', adcreative: '·', chatgpt: '·', dalle: '·', midjourney: '·', krea: '·', stable: '·', davinci: '·', runway: '·', kling: '·' },
+  { tool: 'Shopify Integration', gen: '·', canva: '·', firefly: '·', adcreative: '·', chatgpt: '·', dalle: '·', midjourney: '·', krea: '·', stable: '·', davinci: '·', runway: '·', kling: '·' },
+  { tool: 'Video Generation', gen: '·', canva: '·', firefly: '·', adcreative: '·', chatgpt: '·', dalle: '·', midjourney: '·', krea: '✓', stable: '·', davinci: '✓', runway: '✓', kling: '✓' },
 ];
 
 const threatScores = [
@@ -57,6 +58,7 @@ const threatScores = [
   { name: 'Kaptured AI', score: 6.5, threat: 'Medium Threat', cat: 'Cat 3' },
   { name: 'Flair.ai', score: 6.0, threat: 'Medium Threat', cat: 'Cat 3' },
   { name: 'Adobe Firefly', score: 5.5, threat: 'Medium Threat', cat: 'Cat 1' },
+  { name: 'Krea AI', score: 5.5, threat: 'Medium Threat', cat: 'Cat 2' },
   { name: 'Canva', score: 5.0, threat: 'Medium Threat', cat: 'Cat 1' },
   { name: 'Photoroom', score: 5.0, threat: 'Medium Threat', cat: 'Cat 3' },
   { name: 'AdCreative.ai', score: 4.5, threat: 'Low Threat', cat: 'Cat 1' },
@@ -212,7 +214,7 @@ export function TablesGraphicsTab() {
       {/* Tools & Tactics Breakdown Part 2 */}
       <div style={{ background: '#fff', border: '1px solid hsl(30,40%,85%)', borderRadius: '14px', padding: '24px', overflowX: 'auto' }}>
         <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'hsl(30,40%,22%)', marginBottom: '4px' }}>Tools & Tactics Breakdown — Part 2</h3>
-        <p style={{ fontSize: '13px', color: 'hsl(30,20%,50%)', marginBottom: '20px' }}>Generations + Category 1 & 2 platforms (Canva, Adobe Firefly, AdCreative, ChatGPT, DALL-E, Midjourney, Stable Diffusion, DaVinci.ai, Runway ML, Kling AI)</p>
+        <p style={{ fontSize: '13px', color: 'hsl(30,20%,50%)', marginBottom: '20px' }}>Generations + Category 1 & 2 platforms (Canva, Adobe Firefly, AdCreative, ChatGPT, DALL-E, Midjourney, Krea AI, Stable Diffusion, DaVinci.ai, Runway ML, Kling AI)</p>
         <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '900px' }}>
           <thead>
             <tr>
@@ -224,6 +226,7 @@ export function TablesGraphicsTab() {
               <th style={thBase}>ChatGPT</th>
               <th style={thBase}>DALL-E</th>
               <th style={thBase}>Midjourney</th>
+              <th style={thBase}>Krea AI</th>
               <th style={thBase}>Stable Diff.</th>
               <th style={thBase}>DaVinci.ai</th>
               <th style={thBase}>Runway ML</th>
@@ -241,6 +244,7 @@ export function TablesGraphicsTab() {
                 <td style={{ ...tdBase, ...cellStyle(row.chatgpt) }}>{row.chatgpt}</td>
                 <td style={{ ...tdBase, ...cellStyle(row.dalle) }}>{row.dalle}</td>
                 <td style={{ ...tdBase, ...cellStyle(row.midjourney) }}>{row.midjourney}</td>
+                <td style={{ ...tdBase, ...cellStyle(row.krea) }}>{row.krea}</td>
                 <td style={{ ...tdBase, ...cellStyle(row.stable) }}>{row.stable}</td>
                 <td style={{ ...tdBase, ...cellStyle(row.davinci) }}>{row.davinci}</td>
                 <td style={{ ...tdBase, ...cellStyle(row.runway) }}>{row.runway}</td>

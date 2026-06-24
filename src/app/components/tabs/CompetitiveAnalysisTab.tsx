@@ -7,6 +7,7 @@
     { name: 'Kaptured AI', score: 6.5, color: 'bg-yellow-500', threat: 'Medium Threat', category: 'Cat 3' },
     { name: 'Flair.ai', score: 6, color: 'bg-yellow-500', threat: 'Medium Threat', category: 'Cat 3' },
     { name: 'Adobe Firefly', score: 5.5, color: 'bg-yellow-500', threat: 'Medium Threat', category: 'Cat 1' },
+    { name: 'Krea AI', score: 5.5, color: 'bg-yellow-500', threat: 'Medium Threat', category: 'Cat 2' },
     { name: 'Canva', score: 5, color: 'bg-yellow-500', threat: 'Medium Threat', category: 'Cat 1' },
     { name: 'Photoroom', score: 5, color: 'bg-yellow-500', threat: 'Medium Threat', category: 'Cat 3' },
     { name: 'AdCreative.ai', score: 4.5, color: 'bg-green-500', threat: 'Low Threat', category: 'Cat 1' },
@@ -34,7 +35,7 @@
     },
     {
       title: 'Category 1 & 2 Analysis',
-      insight: 'General-purpose tools (Canva, Adobe Firefly) and AI art tools (Midjourney, ChatGPT) pose minimal threat due to lack of product-specific features.',
+      insight: 'General-purpose tools (Canva, Adobe Firefly) and AI creative suites (Krea AI, Midjourney, ChatGPT) pose lower direct threat due to limited product catalog and production workflow structure.',
       icon: '📊'
     },
     {
@@ -132,9 +133,10 @@
           </div>
 
           <div className="bg-orange-50 rounded-xl p-6">
-            <h4 className="text-lg font-bold text-orange-900 mb-3">Category 2: AI Art Tools</h4>
+            <h4 className="text-lg font-bold text-orange-900 mb-3">Category 2: AI Art & Creative Suites</h4>
             <ul className="space-y-2 text-sm text-gray-700">
               <li>• ChatGPT / GPT-4o</li>
+              <li>• Krea AI</li>
               <li>• Midjourney v7</li>
               <li>• Stable Diffusion</li>
             </ul>

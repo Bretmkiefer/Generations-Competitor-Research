@@ -60,6 +60,19 @@
       ]
     },
     {
+      platform: 'Krea AI',
+      positive: [
+        'Krea\'s own positioning highlights a broad all-in-one creative suite: image generation, video generation, 3D, upscaling, editing, realtime rendering, LoRA fine-tuning, and an asset manager in one subscription.',
+        'The realtime canvas is a meaningful UX differentiator for rapid visual exploration because users can steer generations through typing or drawing instead of waiting on a prompt-only loop.',
+        'LoRA fine-tuning supports product or style training from a few images, making Krea more relevant for product preservation than most general AI art tools.'
+      ],
+      negative: [
+        'Krea is not organized around a persistent SKU catalog, reusable production recipes, or e-commerce campaign workflows, so product teams still need to assemble their own process around the tool.',
+        'The breadth of models and compute-unit pricing can create decision overhead for non-technical users who only want repeatable product photography.',
+        'Brand consistency depends on LoRA setup, prompt discipline, and asset management rather than a dedicated brand-lock or multi-product catalog system.'
+      ]
+    },
+    {
       platform: 'Stable Diffusion',
       positive: [
         'Praised across developer communities for being fully free, locally runnable, and endlessly customizable through fine-tuning and LoRA models.',

@@ -4,21 +4,21 @@
       category: 'Batch Generation',
       description: 'Ability to generate multiple product images at scale efficiently',
       leaders: ['Gen Canopy', 'Claid.ai', 'Nightjar', 'Kaptured AI', 'Photoroom', 'Kive.ai', 'AdCreative.ai'],
-      partial: ['Canva', 'Adobe Firefly', 'Flair.ai', 'Pebblely', 'Stable Diffusion'],
+      partial: ['Canva', 'Adobe Firefly', 'Krea AI', 'Flair.ai', 'Pebblely', 'Stable Diffusion'],
       missing: ['ChatGPT', 'Midjourney']
     },
     {
       category: 'Brand Lock',
       description: 'Maintain consistent brand identity across all generated assets',
       leaders: ['Gen Canopy', 'Claid.ai', 'Nightjar', 'Kaptured AI'],
-      partial: ['Canva', 'Adobe Firefly', 'AdCreative.ai', 'Photoroom', 'Kive.ai', 'Flair.ai'],
+      partial: ['Canva', 'Adobe Firefly', 'AdCreative.ai', 'Krea AI', 'Photoroom', 'Kive.ai', 'Flair.ai'],
       missing: ['ChatGPT', 'Midjourney', 'Stable Diffusion', 'Pebblely']
     },
     {
       category: 'Scene Builder',
       description: 'Visual tool to construct product scenes and environments',
       leaders: ['Gen Canopy', 'Flair.ai'],
-      partial: ['Claid.ai', 'Nightjar', 'Kive.ai'],
+      partial: ['Claid.ai', 'Nightjar', 'Krea AI', 'Kive.ai'],
       missing: ['Canva', 'Adobe Firefly', 'AdCreative.ai', 'ChatGPT', 'Midjourney', 'Stable Diffusion', 'Photoroom', 'Pebblely', 'Kaptured AI']
     },
     {
@@ -26,12 +26,12 @@
       description: 'Centralized management of product catalog and assets',
       leaders: ['Gen Canopy', 'Kive.ai'],
       partial: ['Claid.ai', 'Nightjar', 'Kaptured AI'],
-      missing: ['Canva', 'Adobe Firefly', 'AdCreative.ai', 'ChatGPT', 'Midjourney', 'Stable Diffusion', 'Flair.ai', 'Photoroom', 'Pebblely']
+      missing: ['Canva', 'Adobe Firefly', 'AdCreative.ai', 'ChatGPT', 'Midjourney', 'Krea AI', 'Stable Diffusion', 'Flair.ai', 'Photoroom', 'Pebblely']
     },
     {
       category: 'Style Presets',
       description: 'Pre-configured visual styles for consistent output',
-      leaders: ['Gen Canopy', 'Adobe Firefly', 'Claid.ai', 'Nightjar', 'Kive.ai'],
+      leaders: ['Gen Canopy', 'Adobe Firefly', 'Krea AI', 'Claid.ai', 'Nightjar', 'Kive.ai'],
       partial: ['Canva', 'AdCreative.ai', 'Midjourney', 'Stable Diffusion', 'Flair.ai', 'Photoroom', 'Pebblely', 'Kaptured AI'],
       missing: ['ChatGPT']
     },
@@ -39,16 +39,16 @@
       category: 'Multi-Brand Support',
       description: 'Manage multiple brands within single platform',
       leaders: ['Gen Canopy', 'Adobe Firefly'],
-      partial: ['Canva', 'AdCreative.ai', 'Claid.ai', 'Photoroom'],
+      partial: ['Canva', 'AdCreative.ai', 'Krea AI', 'Claid.ai', 'Photoroom'],
       missing: ['ChatGPT', 'Midjourney', 'Stable Diffusion', 'Nightjar', 'Flair.ai', 'Pebblely', 'Kaptured AI', 'Kive.ai']
     }
   ];
 
   const pricingTiers = [
-    { tier: 'Free / Freemium', platforms: ['Canva', 'ChatGPT', 'Stable Diffusion', 'Flair.ai', 'Pebblely'] },
+    { tier: 'Free / Freemium', platforms: ['Canva', 'ChatGPT', 'Krea AI', 'Stable Diffusion', 'Flair.ai', 'Pebblely'] },
     { tier: '$10 - $50/mo', platforms: ['Midjourney', 'Claid.ai', 'Nightjar', 'Kive.ai', 'Photoroom'] },
-    { tier: '$50 - $120/mo', platforms: ['Adobe Firefly (CC)', 'AdCreative.ai', 'Photoroom (high tier)'] },
-    { tier: 'Agency / Enterprise', platforms: ['Gen Canopy', 'Kaptured AI'] }
+    { tier: '$50 - $120/mo', platforms: ['Adobe Firefly (CC)', 'AdCreative.ai', 'Krea AI (Max)', 'Photoroom (high tier)'] },
+    { tier: 'Agency / Enterprise', platforms: ['Gen Canopy', 'Krea AI Business/Enterprise', 'Kaptured AI'] }
   ];
 
   return (
@@ -172,7 +172,7 @@
           </li>
           <li className="flex gap-3">
             <span className="text-amber-800 font-bold">3.</span>
-            <span><strong>Product SKU Library support is rare</strong>, with only Kive.ai offering partial support beyond Gen Canopy.</span>
+            <span><strong>Product SKU Library support is rare</strong>, with Kive.ai closest beyond Gen Canopy and Krea AI stopping at asset/model management rather than SKU operations.</span>
           </li>
           <li className="flex gap-3">
             <span className="text-amber-800 font-bold">4.</span>

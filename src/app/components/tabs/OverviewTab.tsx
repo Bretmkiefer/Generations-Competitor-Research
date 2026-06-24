@@ -6,6 +6,7 @@
     { name: 'AdCreative.ai', cat: '1', batchGen: '✓', brandLock: '~', sceneBuilder: '✗', productSKU: '✗', stylePresets: '~', multiBrand: '~', pricing: 'Tiered subscription', catColor: 'bg-amber-500' },
     { name: 'ChatGPT / GPT-4o', cat: '2', batchGen: '✗', brandLock: '✗', sceneBuilder: '✗', productSKU: '✗', stylePresets: '✗', multiBrand: '✗', pricing: 'Free / $20/mo', catColor: 'bg-orange-500' },
     { name: 'Midjourney v7', cat: '2', batchGen: '✗', brandLock: '✗', sceneBuilder: '✗', productSKU: '✗', stylePresets: '~', multiBrand: '✗', pricing: '$10 – $120/mo', catColor: 'bg-orange-500' },
+    { name: 'Krea AI', cat: '2', batchGen: '~', brandLock: '~', sceneBuilder: '~', productSKU: '✗', stylePresets: '✓', multiBrand: '~', pricing: 'Free – $200/mo + enterprise', catColor: 'bg-orange-500' },
     { name: 'Stable Diffusion', cat: '2', batchGen: '~', brandLock: '✗', sceneBuilder: '✗', productSKU: '✗', stylePresets: '~', multiBrand: '✗', pricing: 'Free (self-hosted)', catColor: 'bg-orange-500' },
     { name: 'Claid.ai', cat: '3', batchGen: '✓', brandLock: '✓', sceneBuilder: '~', productSKU: '~', stylePresets: '✓', multiBrand: '~', pricing: '$9 – $49/mo + API', catColor: 'bg-emerald-500' },
     { name: 'Nightjar', cat: '3', batchGen: '✓', brandLock: '✓', sceneBuilder: '~', productSKU: '~', stylePresets: '✓', multiBrand: '✗', pricing: '$25 – $50/mo', catColor: 'bg-emerald-500' },

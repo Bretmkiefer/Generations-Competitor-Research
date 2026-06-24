@@ -48,6 +48,14 @@ const platforms = [
     customerRole: 'User giving orders to a skilled assistant',
   },
   {
+    name: 'Krea AI',
+    category: 'Cat 2',
+    keyLanguage: 'Generate, Enhance, Edit, Train, Realtime, Creative AI Suite',
+    summary: '"The world\'s most powerful creative AI suite." Krea positions itself around breadth, speed, and simple access to many cutting-edge models in one subscription. The language is less e-commerce-specific than Kive or Nightjar, but stronger for production than pure prompt tools because it emphasizes realtime generation, asset management, LoRA fine-tuning, and image/video/3D workflows.',
+    verbStyle: 'Fast, model-rich & experimental',
+    customerRole: 'Creative professional / AI power user',
+  },
+  {
     name: 'Stable Diffusion',
     category: 'Cat 2',
     keyLanguage: 'Generate, Run, Fine-tune, Train, Control',
