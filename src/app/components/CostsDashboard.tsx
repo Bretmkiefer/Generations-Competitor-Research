@@ -43,6 +43,17 @@ export interface ModelCard {
 
 const DEFAULT_MODELS: ModelCard[] = [
   {
+    name: 'GPT-Image-2',
+    provider: 'OpenAI',
+    tagline: 'State-of-the-art token-metered image generation',
+    inputTokens: 'Image $8 / 1M; Text $5 / 1M',
+    outputTokens: 'Image $30 / 1M tokens',
+    rows: [
+      { res: 'Token-metered generation', price: 'Varies by size' },
+      { res: 'Batch API', price: '50% off', batch: 'Inputs + outputs' },
+    ],
+  },
+  {
     name: 'Gemini 3.1 Flash Image',
     provider: 'Google',
     tagline: 'Fast multi-resolution output',
@@ -98,7 +109,93 @@ const DEFAULT_MODELS: ModelCard[] = [
     deprecated: 'Shutting down Aug 17, 2026',
     rows: [{ res: 'Standard', price: '$0.060' }],
   },
+  {
+    name: 'FLUX.2 [klein] 4B',
+    provider: 'Black Forest Labs',
+    tagline: 'Lowest-cost FLUX.2 endpoint for high-volume work',
+    rows: [
+      { res: 'Text to image', price: 'From $0.014' },
+      { res: 'Image editing', price: 'From $0.014' },
+    ],
+  },
+  {
+    name: 'FLUX.2 [pro]',
+    provider: 'Black Forest Labs',
+    tagline: 'Production-grade text-to-image and editing',
+    rows: [
+      { res: 'Text to image', price: 'From $0.030' },
+      { res: 'Image editing', price: 'From $0.045' },
+    ],
+  },
+  {
+    name: 'FLUX.2 [max]',
+    provider: 'Black Forest Labs',
+    tagline: 'Highest-quality FLUX.2 model',
+    rows: [
+      { res: 'Text to image', price: 'From $0.070' },
+      { res: 'Image editing', price: 'From $0.070' },
+    ],
+  },
+  {
+    name: 'Ideogram 4.0',
+    provider: 'Ideogram',
+    tagline: 'Strong typography and design-layout generation',
+    rows: [
+      { res: 'Turbo', price: '$0.030' },
+      { res: 'Default', price: '$0.060' },
+      { res: 'Quality', price: '$0.100' },
+    ],
+  },
+  {
+    name: 'Ideogram 4.0 Custom',
+    provider: 'Ideogram',
+    tagline: 'Custom model inference after brand/model training',
+    rows: [
+      { res: 'Training run', price: '$40.00' },
+      { res: 'Custom Turbo', price: '$0.060' },
+      { res: 'Custom Default', price: '$0.120' },
+      { res: 'Custom Quality', price: '$0.200' },
+    ],
+  },
+  {
+    name: 'Midjourney',
+    provider: 'Midjourney',
+    tagline: 'Subscription model; no per-image API pricing',
+    rows: [
+      { res: 'Basic plan', price: '$10/mo' },
+      { res: 'Standard plan', price: '$30/mo' },
+      { res: 'Pro plan', price: '$60/mo' },
+      { res: 'Mega plan', price: '$120/mo' },
+      { res: 'Extra GPU time', price: '$4/hr' },
+    ],
+  },
+  {
+    name: 'Recraft',
+    provider: 'Recraft',
+    tagline: 'Credit-based designer image suite with API access',
+    rows: [
+      { res: 'Generate / modify', price: '1-2 credits' },
+      { res: 'Creative Upscale', price: '20 credits' },
+      { res: 'API access', price: 'Credit-based' },
+    ],
+  },
 ];
+
+function mergeModelLists(defaults: ModelCard[], saved: ModelCard[]) {
+  const savedKeys = new Set(saved.map(model => `${model.provider}::${model.name}`));
+  return [
+    ...saved,
+    ...defaults.filter(model => !savedKeys.has(`${model.provider}::${model.name}`)),
+  ];
+}
+
+function groupByProvider(models: ModelCard[]) {
+  return models.reduce<Record<string, ModelCard[]>>((groups, model) => {
+    groups[model.provider] ??= [];
+    groups[model.provider].push(model);
+    return groups;
+  }, {});
+}
 
 function EditableModelCard({
   model,
@@ -269,7 +366,7 @@ export function CostsDashboard() {
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
       if (data.pricing?.models) {
-        setModels(data.pricing.models);
+        setModels(mergeModelLists(DEFAULT_MODELS, data.pricing.models));
         setUpdatedAt(data.pricing.updatedAt ?? null);
         setLoadState('live');
       } else {
@@ -330,6 +427,7 @@ export function CostsDashboard() {
   }[loadState];
 
   const statusColor = { loading: T.sub, live: T.batchText, default: T.sub, error: T.deprecatedText }[loadState];
+  const groupedModels = groupByProvider(models);
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%', background: T.bg }}>
@@ -359,41 +457,46 @@ export function CostsDashboard() {
             <span style={{ fontSize: '12px', color: statusColor }}>{statusLabel}</span>
           </div>
 
-          <div>
-            <h3 style={{ fontSize: '12px', fontWeight: 700, color: T.sub, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '14px' }}>
-              Google — Gemini &amp; Imagen
-            </h3>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '16px' }}>
-              {models.map((m, i) => (
-                <div key={i}>
-                  <EditableModelCard
-                    model={editingIndex === i && draft ? draft : m}
-                    editing={editingIndex === i}
-                    onEdit={() => startEdit(i)}
-                    onChange={updated => setDraft(updated)}
-                  />
-                  {editingIndex === i && (
-                    <div style={{ display: 'flex', gap: '8px', marginTop: '8px', justifyContent: 'flex-end', alignItems: 'center' }}>
-                      {saveError && <span style={{ fontSize: '12px', color: T.deprecatedText, flex: 1 }}>{saveError}</span>}
-                      <button onClick={cancelEdit} disabled={saving} style={{ display: 'flex', alignItems: 'center', gap: '5px', padding: '6px 12px', borderRadius: '8px', border: `1px solid ${T.border}`, background: T.card, cursor: 'pointer', fontSize: '13px', color: T.sub }}>
-                        <X size={12} /> Cancel
-                      </button>
-                      <button onClick={saveEdit} disabled={saving} style={{ display: 'flex', alignItems: 'center', gap: '5px', padding: '6px 14px', borderRadius: '8px', border: 'none', background: T.accent, cursor: 'pointer', fontSize: '13px', color: '#fff', fontWeight: 600 }}>
-                        <Save size={12} /> {saving ? 'Saving…' : 'Save'}
-                      </button>
+          {Object.entries(groupedModels).map(([provider, providerModels]) => (
+            <div key={provider}>
+              <h3 style={{ fontSize: '12px', fontWeight: 700, color: T.sub, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '14px' }}>
+                {provider}
+              </h3>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '16px' }}>
+                {providerModels.map((m) => {
+                  const i = models.indexOf(m);
+                  return (
+                    <div key={`${m.provider}-${m.name}`}>
+                      <EditableModelCard
+                        model={editingIndex === i && draft ? draft : m}
+                        editing={editingIndex === i}
+                        onEdit={() => startEdit(i)}
+                        onChange={updated => setDraft(updated)}
+                      />
+                      {editingIndex === i && (
+                        <div style={{ display: 'flex', gap: '8px', marginTop: '8px', justifyContent: 'flex-end', alignItems: 'center' }}>
+                          {saveError && <span style={{ fontSize: '12px', color: T.deprecatedText, flex: 1 }}>{saveError}</span>}
+                          <button onClick={cancelEdit} disabled={saving} style={{ display: 'flex', alignItems: 'center', gap: '5px', padding: '6px 12px', borderRadius: '8px', border: `1px solid ${T.border}`, background: T.card, cursor: 'pointer', fontSize: '13px', color: T.sub }}>
+                            <X size={12} /> Cancel
+                          </button>
+                          <button onClick={saveEdit} disabled={saving} style={{ display: 'flex', alignItems: 'center', gap: '5px', padding: '6px 14px', borderRadius: '8px', border: 'none', background: T.accent, cursor: 'pointer', fontSize: '13px', color: '#fff', fontWeight: 600 }}>
+                            <Save size={12} /> {saving ? 'Saving...' : 'Save'}
+                          </button>
+                        </div>
+                      )}
                     </div>
-                  )}
-                </div>
-              ))}
+                  );
+                })}
+              </div>
             </div>
-          </div>
+          ))}
 
           <div style={{ background: T.batchBg, border: `1px solid ${T.batchBorder}`, borderRadius: '12px', padding: '14px 18px', fontSize: '13px', color: T.batchText }}>
-            <strong>Batch API</strong> — All Gemini image models support a 50% discount when requests are processed within 24 hours rather than immediately.
+            <strong>Batch API</strong> - Gemini and OpenAI image models support discounted async batch processing. Other providers listed here use per-image, credit, or subscription pricing.
           </div>
 
           <p style={{ fontSize: '12px', color: T.sub, textAlign: 'center', margin: 0 }}>
-            Pricing source: <a href="https://ai.google.dev/gemini-api/docs/pricing" target="_blank" rel="noreferrer" style={{ color: T.accent }}>ai.google.dev/gemini-api/docs/pricing</a>
+            Pricing sources: <a href="https://ai.google.dev/gemini-api/docs/pricing" target="_blank" rel="noreferrer" style={{ color: T.accent }}>Google</a>{' | '}<a href="https://openai.com/api/pricing/" target="_blank" rel="noreferrer" style={{ color: T.accent }}>OpenAI</a>{' | '}<a href="https://docs.bfl.ai/quick_start/pricing" target="_blank" rel="noreferrer" style={{ color: T.accent }}>Black Forest Labs</a>{' | '}<a href="https://ideogram.ai/api-pricing/" target="_blank" rel="noreferrer" style={{ color: T.accent }}>Ideogram</a>{' | '}<a href="https://docs.midjourney.com/hc/en-us/articles/27870484040333-Comparing-Midjourney-Plans" target="_blank" rel="noreferrer" style={{ color: T.accent }}>Midjourney</a>{' | '}<a href="https://www.recraft.ai/pricing" target="_blank" rel="noreferrer" style={{ color: T.accent }}>Recraft</a>
           </p>
 
         </div>
