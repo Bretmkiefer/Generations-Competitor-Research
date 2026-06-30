@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react';
 import { WebsiteTracker } from './components/WebsiteTracker';
 import { ResearchDashboard } from './components/ResearchDashboard';
 import { CostsDashboard } from './components/CostsDashboard';
+import { WeaveTypeFeaturesDashboard } from './components/WeaveTypeFeaturesDashboard';
 import { Login } from './components/Login';
-import { FileText, Map, Download, DollarSign } from 'lucide-react';
+import { FileText, Map, Download, DollarSign, Layers } from 'lucide-react';
 
 // Source file contents bundled at build time via Vite's ?raw imports
 import appSrc from './App.tsx?raw';
@@ -11,6 +12,7 @@ import trackerSrc from './components/WebsiteTracker.tsx?raw';
 import cardSrc from './components/WebsiteCard.tsx?raw';
 import loginSrc from './components/Login.tsx?raw';
 import researchSrc from './components/ResearchDashboard.tsx?raw';
+import weaveSrc from './components/WeaveTypeFeaturesDashboard.tsx?raw';
 import overviewSrc from './components/tabs/OverviewTab.tsx?raw';
 import competitiveSrc from './components/tabs/CompetitiveAnalysisTab.tsx?raw';
 import feedbackSrc from './components/tabs/CustomerFeedbackTab.tsx?raw';
@@ -27,7 +29,7 @@ import indexCss from '../styles/index.css?raw';
 import tailwindCss from '../styles/tailwind.css?raw';
 import serverSrc from '../../supabase/functions/make-server-0d49d71e/index.ts?raw';
 
-type ViewType = 'tracker' | 'research' | 'costs';
+type ViewType = 'tracker' | 'research' | 'costs' | 'weave';
 
 const SOURCE_FILES: Record<string, string> = {
   'src/app/App.tsx': appSrc,
@@ -35,6 +37,7 @@ const SOURCE_FILES: Record<string, string> = {
   'src/app/components/WebsiteCard.tsx': cardSrc,
   'src/app/components/Login.tsx': loginSrc,
   'src/app/components/ResearchDashboard.tsx': researchSrc,
+  'src/app/components/WeaveTypeFeaturesDashboard.tsx': weaveSrc,
   'src/app/components/tabs/OverviewTab.tsx': overviewSrc,
   'src/app/components/tabs/CompetitiveAnalysisTab.tsx': competitiveSrc,
   'src/app/components/tabs/CustomerFeedbackTab.tsx': feedbackSrc,
@@ -168,6 +171,19 @@ export default function App() {
             <DollarSign className="w-3.5 h-3.5" />
             Costs
           </button>
+          <button
+            onClick={() => setActiveView('weave')}
+            className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium transition-all"
+            style={{
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
+              background: activeView === 'weave' ? NJ.activeBg : 'transparent',
+              color: activeView === 'weave' ? '#fff' : NJ.inactiveText,
+              border: activeView === 'weave' ? `1px solid ${NJ.activeBorder}` : '1px solid transparent',
+            }}
+          >
+            <Layers className="w-3.5 h-3.5" />
+            Weave Type Features
+          </button>
 
           {/* Spacer */}
           <div className="flex-1" />
@@ -198,6 +214,7 @@ export default function App() {
         {activeView === 'tracker' && <WebsiteTracker />}
         {activeView === 'research' && <ResearchDashboard />}
         {activeView === 'costs' && <CostsDashboard />}
+        {activeView === 'weave' && <WeaveTypeFeaturesDashboard />}
       </div>
     </div>
   );

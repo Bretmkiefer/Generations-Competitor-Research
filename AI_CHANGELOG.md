@@ -18,6 +18,13 @@ This ensures every LLM has full context on the project's history, regardless of 
 
 <!-- Most recent entry goes at the TOP -->
 
+### Claude Code — 2026-06-29
+- Added a new top-nav tab, **Weave Type Features**, positioned immediately to the right of the Costs tab (Layers icon).
+- Created `src/app/components/WeaveTypeFeaturesDashboard.tsx`, a new top-level view that renders the full contents of `Competitive_Analysis_Image_Generation_Platforms.md` (the competitive analysis of image generation / creative workflow platforms).
+- Content includes: executive summary; deep-dive cards for Figma Weave, n8n, Klaviyo, Flora AI, Wireflow, ComfyUI, and Krea AI (each with Background, UI/UX, Image Production, Modularity, Pricing, and Key Takeaway sections); an "Other Notable Platforms" grid (Higgsfield Canvas, Freepik Spaces, InvokeAI, Martini, Fal.ai, Dify); the full cross-platform comparison matrix; and the 7 strategic recommendations.
+- Wired into `App.tsx`: new `'weave'` ViewType, nav button, content render, and SOURCE_FILES entry so the component is included in Export Code.
+- Styled with the warm amber/brown `T` theme to match CostsDashboard. Verified with a production build (`npm run build`).
+
 ### Claude Code — 2026-06-23 (2)
 - Added `GET /pricing` and `POST /pricing` endpoints to the Supabase Edge Function, storing pricing data in the KV store.
 - Rebuilt CostsDashboard to fetch live pricing from the API on load, falling back to hardcoded defaults if unavailable.
